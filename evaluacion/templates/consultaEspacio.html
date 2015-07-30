@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block contenido %}
+	<br>
+	<h2 class="text-center">Espacios de trabajo</h2>
+	{% if espacios %}
+	<div class="row">
+		{% for espacio in espacios %}
+				<div class="col-md-3 espacio">
+					<h4>Identificador: {{ espacio.id }}</h4>
+					<h4>Nombre: {{ espacio.nombre }}</h4>
+					<h4>Limite de figuras: {{ espacio.limiteFiguras }}</h4> 
+				</div>
+		{% endfor %}
+	</div>
+	{% else %}
+		<div id="alerta" class="alert alert-warning alert-dismissible fade in" role="alert">
+			<button class="close" data-dismiss="alert" aria-label="Close">x</button>
+			{{ mensaje }}
+		</div>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block contenido %}
+	<div class="text-center">
+		<form method="POST" action="{% url 'evaluacion:crearWorkSpace' %}">
+			{% csrf_token %}
+			<br>
+			<label>Nombre:</label><input name="nombre" id="nombre" type="text"><br>
+			<label>Limite: </label><input name="limite" id="limite" type="number"><br>
+			<button type="submit" class="btn btn-danger">Crear</button>
+		</form>
+	</div>
+	{% if mensaje %}
+		<div id="alerta" class="alert alert-warning alert-dismissible fade in" role="alert">
+			<button class="close" data-dismiss="alert" aria-label="Close">x</button>
+			{{ mensaje }}
+		</div>
+	{% endif %}
+	{% block scripts %}
+		<script type="text/javascript">
+		</script>
+	{% endblock %}
+{% endblock %}

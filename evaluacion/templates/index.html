@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block contenido %}
+	<div class="text-center">
+		<h1>Evaluacion</h1>
+		<form method="GET" action="{% url 'evaluacion:crearWorkSpace' %}">
+			<button type="submit" class="btn btn-danger">Crear espacio</button>
+		</form>
+		<form method="POST" action="{% url 'evaluacion:consultaWorkSpace' %}">
+			<button class="btn btn-success">Ver espacios</button>
+		</form>
+	</div>
+{% endblock %}
+	
