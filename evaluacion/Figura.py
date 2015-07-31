@@ -13,7 +13,6 @@ def crearFigura(request, idWorkSpace, tipo):
             exito = True
         else:
             cuadrado.delete()
-        return exito
     elif tipo=='triangulo':
         workspace = WorkSpace.objects.get(id=int(idWorkSpace))
         triangulo = Triangulo()
@@ -26,7 +25,6 @@ def crearFigura(request, idWorkSpace, tipo):
             exito = True
         else:
             triangulo.delete()
-        return exito
     elif tipo=='hexagono':
         workspace = WorkSpace.objects.get(id=int(idWorkSpace))
         hexagono = Hexagono()
@@ -37,4 +35,23 @@ def crearFigura(request, idWorkSpace, tipo):
             exito = True
         else:
             hexagono.delete()
-        return exito
+    return exito
+
+def eliminarFigura(request, idWorkSpace, idFigura, tipo):
+    exito = False
+    if tipo=='cuadrado':
+        cuadrado = Cuadrado.objects.get(id=int(idFigura))
+        workspace = WorkSpace.objects.get(id=int(idWorkSpace))
+        if workspace.eliminarFigura(cuadrado):
+            exito=True
+    elif tipo=='triangulo':
+        triangulo = Triangulo.objects.get(id=int(idFigura))
+        workspace = WorkSpace.objects.get(id=int(idWorkSpace))
+        if workspace.eliminarFigura(triangulo):
+            exito=True
+    elif tipo=='hexagono':
+        hexagono = Hexagono.objects.get(id=int(idFigura))
+        workspace = WorkSpace.objects.get(id=int(idWorkSpace))
+        if workspace.eliminarFigura(hexagono):
+            exito=True
+    return exito

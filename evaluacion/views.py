@@ -74,3 +74,14 @@ def createFigure(request, identificador,figura):
         else:
             diccionario['mensaje'] = "El area de trabajo esta llena, no se ha creado la figura"
     return render(request, 'crearFigura.html', diccionario)
+
+def deleteFigure(request, identificador, figura, idFigura):
+    """
+    Metodo para eliminar las figuras
+    """
+    diccionario={}
+    if eliminarFigura(request, identificador, idFigura, figura):
+        diccionario['mensaje']="Figura eliminada"
+    else:
+        diccionario['mensaje']="Error al eliminar la figura"
+    return seeWorkSpace(request, identificador)

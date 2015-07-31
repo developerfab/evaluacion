@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^buscarId/$', views.searchWorkSpace, name="buscarId"),
     url(r'^verEspacio/(?P<identificador>\w{0,100})/$', views.seeWorkSpace, name="verEspacio"),
     url(r'^crearFigura/identificador/(?P<identificador>\w{0,100})/figura/(?P<figura>\w{0,10})/', views.createFigure, name="crearFigura"),
+    url(r'^eliminarFigura/identificador/(?P<identificador>\w{0,100})/figura/(?P<figura>\w{0,10})/idFigura/(?P<idFigura>\w{0,10})/', views.deleteFigure, name="eliminarFigura"),
 )

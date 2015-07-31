@@ -9,7 +9,7 @@
 		<div class="col-md-1 figura">
 			<h4>lado: {{ cuadrado.lado }}</h4>
 			<a href="" class="btn btn-primary">Cambiar</a>
-			<a href="" class="btn btn-danger">Eliminar</a>
+			<a href="/eliminarFigura/identificador/{{ espacio.id }}/figura/cuadrado/idFigura/{{ cuadrado.id }}/" class="btn btn-danger">Eliminar</a>
 		</div>
 		{% endfor %}
 		<form method="GET" action="/crearFigura/identificador/{{ espacio.id }}/figura/cuadrado/">
@@ -24,7 +24,7 @@
 			<h4>hipotenusa: {{ triangulo.hipotenusa }}</h4>
 			<h4>altura: {{ triangulo.altura }}</h4>
 			<a href="" class="btn btn-primary">Cambiar</a>
-			<a href="" class="btn btn-danger">Eliminar</a>
+			<a href="/eliminarFigura/identificador/{{ espacio.id }}/figura/triangulo/idFigura/{{ triangulo.id }}/" class="btn btn-danger">Eliminar</a>
 		</div>
 		{% endfor %}
 		<form method="GET" action="/crearFigura/identificador/{{ espacio.id }}/figura/triangulo/">
@@ -37,11 +37,17 @@
 		<div class="col-md-3 figura">
 			<h4>radio: {{ hexagono.radio }}</h4>
 			<a href="" class="btn btn-primary">Cambiar</a>
-			<a href="" class="btn btn-danger">Eliminar</a>
+			<a href="/eliminarFigura/identificador/{{ espacio.id }}/figura/hexagono/idFigura/{{ hexagono.id }}/" class="btn btn-danger">Eliminar</a>
 		</div>
 		{% endfor %}
 		<form method="GET" action="/crearFigura/identificador/{{ espacio.id }}/figura/hexagono/">
 			<button class="btn btn-success" type="submit">Crear Hexagono</button>
 		</form>
 	</div>
+	{% if mensaje %}
+		<div id="alerta" class="alert alert-warning alert-dismissible fade in" role="alert">
+			<button class="close" data-dismiss="alert" aria-label="Close">x</button>
+			{{ mensaje }}
+		</div>
+	{% endif %}
 {% endblock %}
