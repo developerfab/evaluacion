@@ -1,16 +1,36 @@
 from django.db import models
 import math
 
-class WorkSpaceManager(models.Manager):
-    """
-    Metodos de la clase WorkSpace
-    """
+class WorkSpace(models.Model):
+    nombre = models.CharField(max_length=50)
+    limiteFiguras = models.IntegerField()
+
     def agregarFigura(self, figura):
-        pass
+        """
+        Metodo para agregar una figura
+        """
+        if not self.isLleno():
+            figura.workspace=self
+            figura.save()
+            return True
+        return False
+
     def eliminarFigura(self, figura):
-        pass
+        """
+        Metodo para eliminar una figura
+        """
+        figura.delete()
+        return True
+
     def isLleno(self):
-        pass
+        """
+        Metodo para saber si un area de trabajo esta llena
+        """
+        lleno = len(Cuadrado.objects.filter(workspace=self.id))+len(Triangulo.objects.filter(workspace=self.id))+len(Hexagono.objects.filter(workspace=self.id))
+        if lleno<self.limiteFiguras:
+            return False
+        return True
+
     def getAreaTotal(self):
         pass
     def getApotemaTotal(self):
@@ -18,14 +38,9 @@ class WorkSpaceManager(models.Manager):
     def cambiarFigura(self, figura, cambio):
         pass
 
-class WorkSpace(models.Model):
-    nombre = models.CharField(max_length=50)
-    limiteFiguras = models.IntegerField()
-    objects = WorkSpaceManager()
-
 class Figura(models.Model):
     numLados = models.IntegerField()
-    workspace = models.ForeignKey("WorkSpace")
+    workspace = models.ForeignKey("WorkSpace", blank=True, null=True)
 
     def getArea(self):
         pass

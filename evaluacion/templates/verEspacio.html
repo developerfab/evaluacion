@@ -12,9 +12,8 @@
 			<a href="" class="btn btn-danger">Eliminar</a>
 		</div>
 		{% endfor %}
-		<form>
-			<input type="hidden" value="{{ espacio.id }}" name="espacioId">
-			<button class="btn btn-success">Crear cuadrado</button>
+		<form method="GET" action="/crearFigura/identificador/{{ espacio.id }}/figura/cuadrado/">
+			<button class="btn btn-success" type="submit">Crear cuadrado</button>
 		</form>
 	</div>
 	<h3>Triangulos:</h3>
@@ -24,19 +23,25 @@
 			<h4>base: {{ triangulo.base }}</h4>
 			<h4>hipotenusa: {{ triangulo.hipotenusa }}</h4>
 			<h4>altura: {{ triangulo.altura }}</h4>
-			<a href="">Cambiar</a>
-			<a href="">Eliminar</a>
+			<a href="" class="btn btn-primary">Cambiar</a>
+			<a href="" class="btn btn-danger">Eliminar</a>
 		</div>
 		{% endfor %}
+		<form method="GET" action="/crearFigura/identificador/{{ espacio.id }}/figura/triangulo/">
+			<button class="btn btn-success" type="submit">Crear triangulo</button>
+		</form>
 	</div>
-	<h3>Hexagonos:s</h3>
+	<h3>Hexagonos:</h3>
 	<div class="row">
 		{% for hexagono in lista_hexagonos %}
 		<div class="col-md-3 figura">
 			<h4>radio: {{ hexagono.radio }}</h4>
-			<a href="">Cambiar</a>
-			<a href="">Eliminar</a>
+			<a href="" class="btn btn-primary">Cambiar</a>
+			<a href="" class="btn btn-danger">Eliminar</a>
 		</div>
 		{% endfor %}
+		<form method="GET" action="/crearFigura/identificador/{{ espacio.id }}/figura/hexagono/">
+			<button class="btn btn-success" type="submit">Crear Hexagono</button>
+		</form>
 	</div>
 {% endblock %}

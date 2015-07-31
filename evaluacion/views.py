@@ -59,8 +59,18 @@ def searchWorkSpace(request):
         return seeWorkSpace(request, identificador)
     return render(request, 'index.html', {'mensaje':'El espacio ingresado no existe'})
 
-def createFigure(request, figure):
+def createFigure(request, identificador,figura):
     """
     Metodo para la creacion de las figuras
     """
-    valor = crearFigura(request, figure)
+    diccionario = {'title':'Crear figura'}
+    if request.method == 'GET':
+        diccionario['identificador']=int(identificador)
+        diccionario['figura'] = figura
+    else:
+        valor = crearFigura(request, identificador, figura)
+        if valor:
+            diccionario['mensaje'] = "Figura creada con exito"
+        else:
+            diccionario['mensaje'] = "El area de trabajo esta llena, no se ha creado la figura"
+    return render(request, 'crearFigura.html', diccionario)

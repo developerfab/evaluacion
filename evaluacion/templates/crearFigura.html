@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block contenido %}
+	<form method="POST" action="/crearFigura/identificador/{{ identificador }}/figura/{{ figura }}/">
+		{% csrf_token %}
+		{% if figura == "cuadrado" %}
+			<label>Magnitud del lado</label>
+			<input placeholder="lado" type="Number" name="lado">
+		{% elif figura == "triangulo" %}
+			<label>Magnitud de la base: </label>
+			<input placeholder="base" type="Number" name="base">
+			<label>Manitud de la altura:</label>
+			<input placeholder="base" type="Number" name="altura">
+			<label>Manitud de la hipotenuse:</label>
+			<input placeholder="base" type="Number" name="hipotenusa">
+		{% elif figura == "hexagono" %}
+			<label>Magnitud del radio</label>
+			<input placeholder="radio" type="Number" name="radio">
+		{% endif %}
+		<button type="submit" class="btn btn-success">Crear</button>
+	</form>
+	{% if mensaje %}
+		<div id="alerta" class="alert alert-warning alert-dismissible fade in" role="alert">
+			<button class="close" data-dismiss="alert" aria-label="Close">x</button>
+			{{ mensaje }}
+		</div>
+	{% endif %}
+{% endblock %}
