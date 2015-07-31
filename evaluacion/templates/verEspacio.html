@@ -7,8 +7,10 @@
 
 	<div class="row">
 		{% for cuadrado in lista_cuadrados %}
-		<div class="col-md-1 figura">
+		<div class="col-md-2 figura">
 			<h4>lado: {{ cuadrado.lado }}</h4>
+			<h4>Area: {{ cuadrado.getArea }}</h4>
+			<h4>Perimetro: {{ cuadrado.getPerimetro }}</h4>
 			<a href="" class="btn btn-primary">Cambiar</a>
 			<a href="/eliminarFigura/identificador/{{ espacio.id }}/figura/cuadrado/idFigura/{{ cuadrado.id }}/" class="btn btn-danger">Eliminar</a>
 		</div>
@@ -20,10 +22,12 @@
 	<h3>Triangulos:</h3>
 	<div class="row">
 		{% for triangulo in lista_triangulos %}
-		<div class="col-md-3 figura">
+		<div class="col-md-2 figura">
 			<h4>base: {{ triangulo.base }}</h4>
 			<h4>hipotenusa: {{ triangulo.hipotenusa }}</h4>
 			<h4>altura: {{ triangulo.altura }}</h4>
+			<h4>Area: {{ triangulo.getArea }}</h4>
+			<h4>Perimetro: {{ triangulo.getPerimetro }}</h4>
 			<a href="" class="btn btn-primary">Cambiar</a>
 			<a href="/eliminarFigura/identificador/{{ espacio.id }}/figura/triangulo/idFigura/{{ triangulo.id }}/" class="btn btn-danger">Eliminar</a>
 		</div>
@@ -35,8 +39,10 @@
 	<h3>Hexagonos:</h3>
 	<div class="row">
 		{% for hexagono in lista_hexagonos %}
-		<div class="col-md-3 figura">
+		<div class="col-md-2 figura">
 			<h4>radio: {{ hexagono.radio }}</h4>
+			<h4>Area: {{ hexagono.getArea }}</h4>
+			<h4>Perimetro: {{ hexagono.getPerimetro }}</h4>
 			<a href="" class="btn btn-primary">Cambiar</a>
 			<a href="/eliminarFigura/identificador/{{ espacio.id }}/figura/hexagono/idFigura/{{ hexagono.id }}/" class="btn btn-danger">Eliminar</a>
 		</div>
