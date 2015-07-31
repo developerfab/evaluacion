@@ -32,9 +32,25 @@ class WorkSpace(models.Model):
         return True
 
     def getAreaTotal(self):
-        pass
+        areaTotal = 0
+        lista_cuadrado = Cuadrado.objects.filter(workspace=self)
+        lista_triangulo = Triangulo.objects.filter(workspace=self)
+        lista_hexagono = Hexagono.objects.filter(workspace=self)
+        for cuadrado in lista_cuadrado:
+            areaTotal += cuadrado.getArea()
+        for triangulo in lista_triangulo:
+            areaTotal += triangulo.getArea()
+        for hexagono in lista_hexagono:
+            areaTotal += hexagono.getArea()
+        return areaTotal
+
     def getApotemaTotal(self):
-        pass
+        apotemaTotal = 0
+        lista_hexagono = Hexagono.objects.filter(workspace=self)
+        for hexagono in lista_hexagono:
+            apotemaTotal += hexagono.getApotema()
+        return apotemaTotal
+
     def cambiarFigura(self, figura, cambio):
         pass
 

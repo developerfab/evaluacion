@@ -47,7 +47,9 @@ def seeWorkSpace(request, identificador):
     lista_triangulos = Triangulo.objects.filter(workspace_id=int(identificador))
     lista_hexagonos = Hexagono.objects.filter(workspace_id=int(identificador))
     espacio = WorkSpace.objects.get(id=int(identificador))
-    diccionario = {'title':espacio.nombre, 'espacio':espacio, 'lista_cuadrados':lista_cuadrados, 'lista_triangulos':lista_triangulos, 'lista_hexagonos':lista_hexagonos}
+    area = espacio.getAreaTotal()
+    apotema = espacio.getApotemaTotal()
+    diccionario = {'title':espacio.nombre, 'espacio':espacio, 'lista_cuadrados':lista_cuadrados, 'lista_triangulos':lista_triangulos, 'lista_hexagonos':lista_hexagonos, 'area':area, 'apotema':apotema}
     return render(request, 'verEspacio.html', diccionario)
 
 def searchWorkSpace(request):
