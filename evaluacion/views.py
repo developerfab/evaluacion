@@ -50,6 +50,10 @@ def seeWorkSpace(request, identificador):
     diccionario = {'title':espacio.nombre, 'espacio':espacio, 'lista_cuadrados':lista_cuadrados, 'lista_triangulos':lista_triangulos, 'lista_hexagonos':lista_hexagonos}
     return render(request, 'verEspacio.html', diccionario)
 
+def searchWorkSpace(request):
+    identificador = request.POST['identificador']
+    return seeWorkSpace(request, identificador)
+
 def createFigure(request, figure):
     """
     Metodo para la creacion de las figuras
