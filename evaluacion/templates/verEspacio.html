@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block contenido %}
+	<h1 class="text-center">{{ espacio.name }}</h1>
+	
+	<h3>Cuadrados:</h3>
+
+	<div class="row">
+		{% for cuadrado in lista_cuadrados %}
+		<div class="col-md-1 figura">
+			<h4>lado: {{ cuadrado.lado }}</h4>
+			<a href="" class="btn btn-primary">Cambiar</a>
+			<a href="" class="btn btn-danger">Eliminar</a>
+		</div>
+		{% endfor %}
+		<form>
+			<button class="btn btn-success">Crear cuadrado</button>
+		</form>
+	</div>
+	<h3>Triangulos:</h3>
+	<div class="row">
+		{% for triangulo in lista_triangulos %}
+		<div class="col-md-3 figura">
+			<h4>base: {{ triangulo.base }}</h4>
+			<h4>hipotenusa: {{ triangulo.hipotenusa }}</h4>
+			<h4>altura: {{ triangulo.altura }}</h4>
+			<a href="">Cambiar</a>
+			<a href="">Eliminar</a>
+		</div>
+		{% endfor %}
+	</div>
+	<h3>Hexagonos:s</h3>
+	<div class="row">
+		{% for hexagono in lista_hexagonos %}
+		<div class="col-md-3 figura">
+			<h4>radio: {{ hexagono.radio }}</h4>
+			<a href="">Cambiar</a>
+			<a href="">Eliminar</a>
+		</div>
+		{% endfor %}
+	</div>
+{% endblock %}

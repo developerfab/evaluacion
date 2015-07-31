@@ -5,11 +5,13 @@
 	{% if espacios %}
 	<div class="row">
 		{% for espacio in espacios %}
+			<a href="../verEspacio/{{espacio.id}}">
 				<div class="col-md-3 espacio">
 					<h4>Identificador: {{ espacio.id }}</h4>
 					<h4>Nombre: {{ espacio.nombre }}</h4>
 					<h4>Limite de figuras: {{ espacio.limiteFiguras }}</h4> 
 				</div>
+			</a>
 		{% endfor %}
 	</div>
 	{% else %}

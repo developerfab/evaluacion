@@ -2,3 +2,9 @@
 	background-color: rgba(86,61,124,.15);
 	margin: 2px;
 }
+
+.figura{
+	background-color: rgb(225,142,142);
+	margin: 2px;
+	padding-bottom: 4px;
+}

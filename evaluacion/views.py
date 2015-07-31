@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from evaluacion.models import *
-import math
-
+from Figura import * 
 # Create your views here.
 
 def index(request):
@@ -40,3 +39,19 @@ def consultWorkSpace(request):
         dic['mensaje'] = 'No existen espacios de trabajo'
     return render(request, 'consultaEspacio.html', dic)
 
+def seeWorkSpace(request, identificador):
+    """
+    Metodo para ver un espacio individual
+    """
+    lista_cuadrados = Cuadrado.objects.filter(workspace_id=int(identificador))
+    lista_triangulos = Triangulo.objects.filter(workspace_id=int(identificador))
+    lista_hexagonos = Hexagono.objects.filter(workspace_id=int(identificador))
+    espacio = WorkSpace.objects.get(id=int(identificador))
+    diccionario = {'title':espacio.nombre, 'espacio':espacio, 'lista_cuadrados':lista_cuadrados, 'lista_triangulos':lista_triangulos, 'lista_hexagonos':lista_hexagonos}
+    return render(request, 'verEspacio.html', diccionario)
+
+def createFigure(request, figure):
+    """
+    Metodo para la creacion de las figuras
+    """
+    valor = crearFigura(request, figure)
