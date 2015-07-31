@@ -8,5 +8,5 @@ urlpatterns = patterns('',
     url(r'^crearWorkSpace/$',views.createWorkSpace, name="crearWorkSpace"),
     url(r'^consultaWorkSpace/$', views.consultWorkSpace, name="consultaWorkSpace"),
     url(r'^verEspacio/(?P<identificador>\w{0,100})/$', views.seeWorkSpace, name="verEspacio"),
-    url(r'^crearFigura/(?P<figura>\w{0,10})/$', views.createFigure, name="crearFigura"),
+    url(r'^verEspacio/(?P<identificador>\w{0,100})/crearFigura/(?P<figura>\w{0,10})/$', views.createFigure, name="crearFigura"),
 )

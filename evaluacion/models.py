@@ -53,7 +53,7 @@ class Triangulo(Figura):
     hipotenusa = models.IntegerField()
 
     def getArea(self):
-        area = ((self.base)*(self.altura)/2)
+        area = float(float((self.base)*(self.altura))/2)
         return area
 
     def getPerimetro(self):
@@ -65,8 +65,13 @@ class Hexagono(Figura):
     radio = models.IntegerField()
 
     def getApotema(self):
-        pass
+        apotema = math.sqrt(pow(self.radio,2)-pow(self.radio/2,2))
+        return apotema
+
     def getArea(self):
-        pass
+        area = self.getApotema()*self.getPerimetro()
+        return area
+
     def getPerimetro(self):
-        pass
+        perimetro = self.radio*6
+        return perimetro

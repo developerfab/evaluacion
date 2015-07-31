@@ -62,3 +62,45 @@ class FiguraTest(TestCase):
         Hexagono.objects.create(radio=7, numLados=6, workspace=espacio)
         lista_hexagono = Hexagono.objects.filter(workspace_id=espacio.id)
         self.assertEqual(len(lista_hexagono),4)
+
+    def areaCuadrado(self):
+        espacio = WorkSpace.objects.get(nombre="espacio")
+        Cuadrado.objects.create(lado=3, numLados=4, workspace=espacio)
+        cuadrado = Cuadrado.objects.filter(workspace=espacio)[0]
+        area = cuadrado.getArea()
+        self.assertEqual(area, 9)
+
+    def areaTriangulo(self):
+        espacio = WorkSpace.objects.get(nombre="espacio")
+        Triangulo.objects.create(base=1,altura=1, hipotenusa=2, numLados=3, workspace=espacio)
+        triangulo = Triangulo.objects.filter(workspace=espacio)[0]
+        area = triangulo.getArea()
+        self.assertEqual(area, 0.5)
+
+    def areaHexagono(self):
+        espacio = WorkSpace.objects.get(nombre="espacio")
+        Hexagono.objects.create(radio=4, numLados=6, workspace=espacio)
+        hexagono = Hexagono.objects.filter(workspace=espacio)[0]
+        area = hexagono.getArea()
+        self.assertEqual(area, 83.13843876330611)
+
+    def perimetroCuadrado(self):
+        espacio = WorkSpace.objects.get(nombre="espacio")
+        Cuadrado.objects.create(lado=3, numLados=4, workspace=espacio)
+        cuadrado = Cuadrado.objects.filter(workspace=espacio)[0]
+        perimetro = cuadrado.getPerimetro()
+        self.assertEqual(perimetro, 12)
+
+    def perimetroTriangulo(self):
+        espacio = WorkSpace.objects.get(nombre="espacio")
+        Triangulo.objects.create(base=1,altura=1, hipotenusa=2, numLados=3, workspace=espacio)
+        triangulo = Triangulo.objects.filter(workspace=espacio)[0]
+        perimetro = triangulo.getPerimetro()
+        self.assertEqual(perimetro, 4.732050807568877)
+
+    def perimetroHexagono(self):
+        espacio = WorkSpace.objects.get(nombre="espacio")
+        Hexagono.objects.create(radio=4, numLados=6, workspace=espacio)
+        hexagono = Hexagono.objects.filter(workspace=espacio)[0]
+        perimetro = hexagono.getPerimetro()
+        self.assertEqual(perimetro, 24)

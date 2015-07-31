@@ -8,7 +8,7 @@ def crearFigura(request, tipo):
         workspace = WorkSpace.objects.get(id=request.POST['id'])
         Cuadrado.objects.create(lado=lado, numLados = 4, workspace=workspace)
         exito = True
-    elif tipo='triangulo':
+    elif tipo=='triangulo':
         pass
     elif tipo=='hexagono':
         pass
