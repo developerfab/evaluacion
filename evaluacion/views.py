@@ -51,8 +51,13 @@ def seeWorkSpace(request, identificador):
     return render(request, 'verEspacio.html', diccionario)
 
 def searchWorkSpace(request):
+    """
+    Metodo para buscar por id un espacio de trabajo
+    """
     identificador = request.POST['identificador']
-    return seeWorkSpace(request, identificador)
+    if WorkSpace.objects.filter(id=int(identificador)).exists():
+        return seeWorkSpace(request, identificador)
+    return render(request, 'index.html', {'mensaje':'El espacio ingresado no existe'})
 
 def createFigure(request, figure):
     """

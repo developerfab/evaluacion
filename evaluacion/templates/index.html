@@ -15,6 +15,12 @@
 			<input name="identificador" placeholder="Id">
 			<button class="btn btn-primary" type="submit">Buscar</button>
 		</form>
+		{% if mensaje %}
+		<div id="alerta" class="alert alert-warning alert-dismissible fade in" role="alert">
+			<button class="close" data-dismiss="alert" aria-label="Close">x</button>
+			{{ mensaje }}
+		</div>
+		{% endif %}
 	</div>
 {% endblock %}
 	
